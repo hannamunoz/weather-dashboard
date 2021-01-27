@@ -18,7 +18,7 @@ $( document ).ready(function() {
 
 // need a call to the API
 function searchForWeather() {
-    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${apiKey}`;
+    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&units=imperial&appid=${apiKey}`;
 
     $.ajax({
         url: queryURL,
@@ -40,4 +40,21 @@ function updateWeather(data) {
 
     // Set weather information to locations on html
     cityName.innerHTML = data.name + ' ' + ourTimezone.month + '/' + ourTimezone.day + '/' + ourTimezone.year;
+    temp.innerHTML = 'Temperature: ' + data.main.temp + 'F°';
+    humidity.innerHTML = 'Humidity: ' + data.main.humidity + '%';
+    wind.innerHTML = 'Wind Speed: ' + data.wind.speed + 'MPH';
+    
+    // Using OneCall API URL
+    let urlQuery = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly&units=imperial&appid=${apiKey}`;
+
+    $.ajax({
+        url: urlQuery,
+        method: 'GET',
+        error: function(err){
+            errorModal(err);
+        }
+    }).then(function(response){
+        // need another function to update the 5 day forecast & uv index (not on original call)
+        updateFiveDay(response);
+    });
 }
