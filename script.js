@@ -1,18 +1,29 @@
 $( document ).ready(function() {
 
+// Button to call on click
   var searchBtn = document.getElementById('searchButton');
+// Search Input
   var searchInput = document.getElementById('searchValue');
+// Update areas on page
   var cityName = document.getElementById('cityName');
   var temp = document.getElementById('temp');
   var humidity = document.getElementById('humid');
   var wind = document.getElementById('wind');
   var uvIndex = document.getElementById('uv');
+// Array to store search history
   var searchHist = [];
+// ErrorModal contents
+let modal = document.getElementById('errorModal');
+let modalClose = document.getElementById('modalClose');
+let errorContent = document.getElementById('errorContent');
+// API key
   var apiKey = '13659ca4a2177fdbcfbf8f91bf870bd9'
+// Using Luxon for Date/Time
+   var dateTime = luxon.DateTime;
 
 
 // need an onclick for searchBtn that updates the history
-// $(searchBtn).on('click', updateHistory);
+$(searchBtn).on('click', searchForWeather);
 
 // Need to add onclick for history cities to be able to click
 
@@ -28,7 +39,8 @@ function searchForWeather() {
         }
     }).then(function(response) {
         console.log(response);
-        // Need a function here to update all the information on the page
+        // Function from below to update data
+        updateWeather(response);
     })
 }
 });
@@ -36,7 +48,7 @@ function searchForWeather() {
 function updateWeather(data) {
     // Need to update the time to current timezone else current days could get confused
     let rawTimezone = parseInt(data.dt) + parseInt(data.timezone);
-    let ourTimezone = DateTime.fromSeconds(rawTimezone);
+    let ourTimezone = dateTime.fromSeconds(rawTimezone);
 
     // Set weather information to locations on html
     cityName.innerHTML = data.name + ' ' + ourTimezone.month + '/' + ourTimezone.day + '/' + ourTimezone.year;
