@@ -6,3 +6,7 @@
     font-size: 20px;
     margin-bottom: 5px;
 }
+
+#temp, #humid, #wind, #uv {
+    padding: 10px;
+}

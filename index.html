@@ -25,8 +25,8 @@
                 <div class="container-fluid bg-light">
                     <h4>Search for City:</h4>
                     <form class="d-flex mb-4">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                        <input id="searchValue" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button id="searchButton" class="btn btn-outline-primary" type="submit">Search</button>
                     </form>
                     <div class="border p-2">City History</div>
                     <div class="border p-2">City History</div>
@@ -40,12 +40,12 @@
             </div>
             <div class="col-md-8 border bg-light mt-3 mb-3">
                 <div>
-                    <h3>Where current city will go:</h3>
+                    <h3 id="cityName">Where current city will go:</h3>
                 </div>
-                <div>Temperature:</div>
-                <div>Humidity:</div>
-                <div>Wind Speed:</div>
-                <div>UV Index:</div>
+                <div id="temp">Temperature:</div>
+                <div id="humid">Humidity:</div>
+                <div id="wind">Wind Speed:</div>
+                <div id="uv">UV Index:</div>
             </div>
         </div>
         <div class="row justify-content-end">
