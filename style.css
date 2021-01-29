@@ -10,3 +10,15 @@
 #temp, #humid, #wind, #uv {
     padding: 10px;
 }
+
+#highlightGreen {
+    background-color: rgb(115, 201, 115);
+}
+
+#highlightYellow {
+    background-color: rgb(235, 235, 129);
+}
+
+#highlightRed {
+    background-color: rgb(204, 104, 104);
+}
