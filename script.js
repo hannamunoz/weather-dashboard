@@ -10,6 +10,8 @@ $(document).ready(function () {
     let humidity = document.getElementById('humid');
     let wind = document.getElementById('wind');
     let uvIndex = document.getElementById('uv');
+    // 5 Day Forecast areas to update
+    let forecastFive = document.getElementById('forecastFive');
     // Array to store search history
     var searchHist = [];
     // ErrorModal contents
@@ -93,7 +95,7 @@ $(document).ready(function () {
     function updateFiveDay(data) {
         // get UV information and apply to html element
         var uvIndexInfo = data.current.uvi;
-        uvIndex.innerHTML = uvIndexInfo;
+        uvIndex.innerHTML = `UV Index: ${uvIndexInfo}`;
         // set severity of UV index
         if (uvIndexInfo <= 3) {
             $(uvIndex).attr("class", "highlightGreen");
@@ -101,6 +103,18 @@ $(document).ready(function () {
             $(uvIndex).attr("class", "highlightYellow"); 
         } else {
             $(uvIndex).attr("class", "highlightRed");
+        }
+
+        // Need to clear previous info on forecast
+        $(forecastFive).empty();
+        // Now update information on forecast
+        for (i = 1; i < 6; i++) {
+            // Grab data from API
+            let fiveDayData = data.daily[i];
+            // Need to again adjust for timezone
+            let thatTimezone = parseInt(fiveDayData.dt) + parseInt(data.timezone_offset);
+            //  Need to parse the time data to readable units
+            let myTimezone = DateTime.fromSeconds(thatTimezone);
         }
     }
 });
