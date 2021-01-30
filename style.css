@@ -22,3 +22,10 @@
 #highlightRed {
     background-color: rgb(204, 104, 104);
 }
+
+.fiveDayCard {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(73, 73, 238);
+    width: 150px;
+}

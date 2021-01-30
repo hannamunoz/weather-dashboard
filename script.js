@@ -114,7 +114,23 @@ $(document).ready(function () {
             // Need to again adjust for timezone
             let thatTimezone = parseInt(fiveDayData.dt) + parseInt(data.timezone_offset);
             //  Need to parse the time data to readable units
-            let myTimezone = DateTime.fromSeconds(thatTimezone);
+            let myTimezone = dateTime.fromSeconds(thatTimezone);
+            // Append returned info to fiveday forecast panels
+            $(forecastFive).append(`<div class="fiveDayCard flexcol col-1 rounded" id="card${i}"></div>`);
+            // Add details of forecast
+            $('#card' + i).append(`<h3 id="forecastFive" class="text-white h4 mb-3">${myTimezone.month}/${myTimezone.day}/${myTimezone.year}</h3>`)
+            // Need to add images here
+            // adding the temperature
+            .append(`<p class="text-white">Temp: ${fiveDayData.temp.day}F°</p>`)
+            // adding humidity
+            .append(`<p class="text-white mb-0">Humidity: ${fiveDayData.humidity}</p>`)
+
         }
     }
+
+    // Function to update the city history
+    function updateHistory(city) {
+        
+    }
+
 });
