@@ -1,31 +1,56 @@
 .header {
     padding: 10px;
     text-align: center;
-    background: grey;
+    background: rgb(135, 163, 185);
     color: white;
     font-size: 20px;
     margin-bottom: 5px;
 }
 
-#temp, #humid, #wind, #uv {
+.currentCast {
+    background-color: rgb(99, 105, 138);
+}
+
+#temp, #humid, #wind {
     padding: 10px;
 }
 
-#highlightGreen {
+#uv {
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 5px;
+    padding-left: 10px;
+    width: 120px;
+}
+
+.highlightGreen {
     background-color: rgb(115, 201, 115);
 }
 
-#highlightYellow {
+.highlightYellow {
     background-color: rgb(235, 235, 129);
 }
 
-#highlightRed {
+.highlightRed {
     background-color: rgb(204, 104, 104);
 }
 
-.fiveDayCard {
-    border-radius: 5px;
-    padding: 5px;
-    background-color: rgb(73, 73, 238);
-    width: 150px;
+
+.forecastFiveDay {
+    color: white;
 }
+
+#fiveDayCard {
+    margin-left: 170px;
+}
+
+
+.fiveDayPanel {
+    background-color: rgb(149, 209, 233);
+    padding: 4px;
+    border-radius: 5px;
+    width: 150px;
+    height: 250x;
+}
+
