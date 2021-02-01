@@ -31,6 +31,10 @@ $(document).ready(function () {
         searchFormInput();
     });
 
+    $(document).on('click', "#cityHistory", function() {
+        searchForWeather(this.textContent, false)
+    })
+
     // Need to add onclick for history cities to be able to click
 
     // Need function to gather data from search input 
@@ -44,7 +48,7 @@ $(document).ready(function () {
     }
 
     // need a call to the API
-    function searchForWeather(city) {
+    function searchForWeather(city, historyArray) {
         let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
 
         $.ajax({
@@ -100,8 +104,8 @@ $(document).ready(function () {
             if (searchHist[i] != undefined) {
                 $(historyPanel).append(`<div class="border p-2" id="cityHistory">${searchHist[i]}</div>`);
             }
+            searchForWeather(searchHist[0], false);
         }
-        searchForWeather(searchHist[0], false);
     }
 
     // function to update the five day weather and UV index
